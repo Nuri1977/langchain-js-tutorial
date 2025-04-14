@@ -6,6 +6,7 @@
   "module": "index.mjs",
   "type": "module",
   "scripts": {
+    "start": "node dist/index.js",
     "test": "test"
   },
   "author": "Nuri Lacka",
@@ -14,5 +15,9 @@
     "@langchain/core": "^0.3.44",
     "dotenv": "^16.5.0",
     "langchain": "^0.3.21"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
   }
 }
