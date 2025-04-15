@@ -10,18 +10,13 @@ const model = new ChatGoogleGenerativeAI({
 });
 
 const outputParser  = async () => {
-
-
-// Batch and stream are also supported
-const res = await model.invoke([
-  [
-    "human",
-    "What would be a good company name for a company that makes colorful socks?",
-  ],
-]);
-
-return res;
-
+  const res = await model.invoke([
+    [
+      "human",
+      "What would be a good company name for a company that makes colorful socks?",
+    ],
+  ]);
+  return res;
 }
 
 export default outputParser;

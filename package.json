@@ -2,11 +2,11 @@
   "name": "langchain-js-tutorial",
   "version": "1.0.0",
   "description": "Practice",
-  "main": "index.js",
-  "module": "index.mjs",
+  "main": "app/index.js",
+  "module": "app/index.mjs",
   "type": "module",
   "scripts": {
-    "start": "npx tsc && node dist/index.js",
+    "start": "npx tsc && node dist/app/index.js",
     "test": "test"
   },
   "author": "Nuri Lacka",
