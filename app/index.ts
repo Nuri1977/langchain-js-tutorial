@@ -10,8 +10,7 @@ const tutorial: number = 1;
 
 switch (tutorial) {
   case 1:
-    const res = await outputParser();
-    console.log(res);
+    await outputParser();
     break;
   case 2:
     console.log('tutorial2 runned');
