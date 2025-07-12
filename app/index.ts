@@ -1,20 +1,72 @@
 // Renamed the file to TypeScript
 import { config } from 'dotenv';
+import * as readline from 'readline';
 import outputParser from './tutorial_01/output_parser.js';
+import retrevialChain from './tutorial_01/retrevial_chain.js';
 
 config();
 
 const test: string = process.env.TEST || 'not working';
 
-const tutorial: number = 1;
+const listOfTutorials: string[] = [
+  'output_parser',
+  'retrieval_chain',
+];
 
-switch (tutorial) {
-  case 1:
-    await outputParser();
-    break;
-  case 2:
-    console.log('tutorial2 runned');
-    break;
-  default:
-    console.log('Invalid tutorial number');
+// Create readline interface for user input
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+// Function to prompt user for tutorial selection
+function promptUser(): Promise<number> {
+  return new Promise((resolve) => {
+    console.log('\n=== LangChain JS Tutorial Menu ===');
+    console.log('Please select a tutorial to run:');
+    console.log('1. Output Parser');
+    console.log('2. Retrieval Chain');
+    console.log('0. Exit');
+    console.log('==================================');
+    
+    rl.question('Enter your choice (0-2): ', (answer) => {
+      const choice = parseInt(answer.trim());
+      if (isNaN(choice) || choice < 0 || choice > 2) {
+        console.log('Invalid choice. Please enter 0, 1, or 2.');
+        resolve(promptUser());
+      } else {
+        resolve(choice);
+      }
+    });
+  });
 }
+
+// Main execution
+async function main() {
+  try {
+    const tutorial = await promptUser();
+    
+    console.log(`\nRunning tutorial ${tutorial}...\n`);
+    
+    switch (tutorial) {
+      case 1:
+        await outputParser();
+        break;
+      case 2:
+        await retrevialChain();
+        break;
+      case 0:
+        console.log('Goodbye!');
+        break;
+      default:
+        console.log('Invalid tutorial number');
+    }
+  } catch (error) {
+    console.error('Error running tutorial:', error);
+  } finally {
+    rl.close();
+  }
+}
+
+// Run the main function
+main();
