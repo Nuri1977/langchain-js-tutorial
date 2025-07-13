@@ -12,8 +12,11 @@
   "author": "Nuri Lacka",
   "license": "ISC",
   "dependencies": {
-    "@langchain/core": "^0.3.44",
-    "@langchain/google-genai": "^0.2.3",
+    "@google/generative-ai": "^0.24.1",
+    "@langchain/community": "^0.3.48",
+    "@langchain/core": "^0.3.62",
+    "@langchain/google-genai": "^0.2.14",
+    "cheerio": "^1.1.0",
     "dotenv": "^16.5.0",
     "langchain": "^0.3.21",
     "zod": "^3.24.2"

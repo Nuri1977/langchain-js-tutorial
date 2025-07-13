@@ -2,11 +2,9 @@
 import { config } from 'dotenv';
 import * as readline from 'readline';
 import outputParser from './tutorial_01/output_parser.js';
-import retrevialChain from './tutorial_01/retrevial_chain.js';
+import retrievalChain from './tutorial_01/retrieval_chain.js';
 
 config();
-
-const test: string = process.env.TEST || 'not working';
 
 const listOfTutorials: string[] = [
   'output_parser',
@@ -53,7 +51,7 @@ async function main() {
         await outputParser();
         break;
       case 2:
-        await retrevialChain();
+        await retrievalChain();
         break;
       case 0:
         console.log('Goodbye!');
