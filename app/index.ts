@@ -3,6 +3,7 @@ import { config } from 'dotenv';
 import * as readline from 'readline';
 import outputParser from './tutorial_01/output_parser.js';
 import retrievalChain from './tutorial_01/retrieval_chain.js';
+import conversationReatrievalChain from './tutorial_01/conversation_retrieval_chain.js';
 
 config();
 
@@ -22,15 +23,16 @@ function promptUser(): Promise<number> {
   return new Promise((resolve) => {
     console.log('\n=== LangChain JS Tutorial Menu ===');
     console.log('Please select a tutorial to run:');
+    console.log('0. Exit');
     console.log('1. Output Parser');
     console.log('2. Retrieval Chain');
-    console.log('0. Exit');
+    console.log('3. Conversation Retrieval Chain');
     console.log('==================================');
     
-    rl.question('Enter your choice (0-2): ', (answer) => {
+    rl.question('Enter your choice (0-3): ', (answer) => {
       const choice = parseInt(answer.trim());
-      if (isNaN(choice) || choice < 0 || choice > 2) {
-        console.log('Invalid choice. Please enter 0, 1, or 2.');
+      if (isNaN(choice) || choice < 0 || choice > 3) {
+        console.log('Invalid choice. Please enter 0, 1, 2, or 3.');
         resolve(promptUser());
       } else {
         resolve(choice);
@@ -52,6 +54,9 @@ async function main() {
         break;
       case 2:
         await retrievalChain();
+        break;
+      case 3:
+        await conversationReatrievalChain();
         break;
       case 0:
         console.log('Goodbye!');

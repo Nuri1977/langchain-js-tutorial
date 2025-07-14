@@ -58,7 +58,7 @@ const retrievalChain  = async () => {
   ///////////////////////////////////////////////
 
   const loader = new CheerioWebBaseLoader(
-    "https://www.weekday.works/people/nuri-lacka-nuri-lacka",
+    "https://www.weekday.works/people/vishwas-gopinath-vishwas-gopinath-0020a09b",
     {
       selector: "p",
     }
@@ -99,7 +99,7 @@ const retrievalChain  = async () => {
 
 
   const res = await retrieval_chain.invoke({
-    input: "Who is Nuri Lacka?",
+    input: "Who is Vishwas Gopinath?",
   });
   console.log("Response:", res);
 }
