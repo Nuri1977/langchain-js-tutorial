@@ -5,6 +5,7 @@ import outputParser from './tutorial_01/output_parser.js';
 import retrievalChain from './tutorial_01/retrieval_chain.js';
 import conversationReatrievalChain from './tutorial_01/conversation_retrieval_chain.js';
 import agentsRetrievalChain from './tutorial_01/agent.js';
+import memoryRetrievalChain from './tutorial_01/memory.js';
 
 config();
 
@@ -24,12 +25,13 @@ function promptUser(): Promise<number> {
     console.log('2. Retrieval Chain');
     console.log('3. Conversation Retrieval Chain');
     console.log('4. Agents Retrieval Chain');
+    console.log('5. Memory Retrieval Chain');
     console.log('==================================');
     
-    rl.question('Enter your choice (0-4): ', (answer) => {
+    rl.question('Enter your choice (0-5): ', (answer) => {
       const choice = parseInt(answer.trim());
-      if (isNaN(choice) || choice < 0 || choice > 4) {
-        console.log('Invalid choice. Please enter 0, 1, 2, 3 or 4.');
+      if (isNaN(choice) || choice < 0 || choice > 5) {
+        console.log('Invalid choice. Please enter 0, 1, 2, 3, 4 or 5.');
         resolve(promptUser());
       } else {
         resolve(choice);
@@ -57,6 +59,9 @@ async function main() {
         break;
       case 4:
         await agentsRetrievalChain(rl);
+        break;
+      case 5:
+        await memoryRetrievalChain(rl);
         break;
       case 0:
         console.log('Goodbye!');

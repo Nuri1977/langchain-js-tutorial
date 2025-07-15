@@ -10,10 +10,6 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { TaskType } from "@google/generative-ai";
 import { createRetrieverTool } from "langchain/tools/retriever";
 
-// Configure LangSmith tracing
-process.env.LANGCHAIN_TRACING_V2 = "true";
-// Using default project on free tier
-
 const model = new ChatGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_API_KEY,
   model: "gemini-2.0-flash",
